@@ -347,5 +347,5 @@ function score(event) {
 
 Try changing the colour of the circles!
 
-Have a look at the final project here [jsfiddle example](https://jsfiddle.net/xq41u0af/2/)
+Have a look at the final project here [jsfiddle example](https://jsfiddle.net/xq41u0af/4/)
 
