@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Circles</title>
+
+  <style>
+    canvas {
+    border: 3px solid #20751d;
+}
+  </style>
+
+  
+</head>
+<body>
+  <div id="score">score 0</div>
+<canvas id="canvas" width="600" height="600"></canvas>
+
+
+  <script>
+    var circles = [];
+var COUNT = 0;
+var MAX = 4;
+var SCORE =0;
+
+var canvas = document.getElementById('canvas');
+var ctx = canvas.getContext('2d');
+canvas.addEventListener("click",score);
+
+start();
+
+function score(event) {
+  // Get click position relative to the canvas
+  const rect = canvas.getBoundingClientRect();
+  const X = event.clientX - rect.left;
+  const Y = event.clientY - rect.top;
+
+  circles.forEach( function(circle) {
+
+  // Calculate the distance between the click and the centre of the circle
+    var distance = Math.sqrt((circle.X-X)**2 + (circle.Y-Y)**2);
+  
+  // Move the circle, and increase the score
+    if (distance < circle.radius) {
+      move(circle);
+        SCORE++;
+        var scr = document.getElementById('score');
+        scr.innerHTML="score "+SCORE;
+    }
+
+  });
+}
+
+function start() {
+  for (var i=0; i< MAX; i++) {
+    createCircle();
+}
+}
+
+function createCircle() {
+
+  if (COUNT < MAX) {
+  COUNT++;
+  // Circle parameters
+  var X = canvas.width * Math.random();
+  var Y = canvas.height * Math.random();
+  var radius = (100*Math.random())+50;
+  circles.push({X,Y,radius, COUNT});
+  drawCircle(X,Y,radius);
+  }
+}
+
+function drawCircle(X,Y,radius) {
+
+  ctx.beginPath();
+  ctx.arc(X, Y, radius, 0, 2 * Math.PI, false);
+  ctx.lineWidth = 3;
+  ctx.strokeStyle = '#FF0000'; // Red color for the border
+  ctx.stroke();
+
+  ctx.fillStyle = 'blue'; // Blue color for the fill
+
+  if (radius<40)
+    ctx.fillStyle = 'yellow';
+  ctx.fill();
+}
+
+function update(circle) {
+if (circle.radius>10) {
+  circle.radius--;
+  drawCircle(circle.X, circle.Y, circle.radius);
+}
+else {
+  move(circle);
+}
+}
+
+function move(circle) {
+
+  circle.X = canvas.width * Math.random();
+  circle.Y = canvas.height * Math.random();
+  circle.radius = (100*Math.random())+50;
+
+}
+
+function animate(timestamp) {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  circles.forEach(update);
+  requestAnimationFrame(animate);
+}
+
+animate();
+
+  </script>
+</body>
+</html>
