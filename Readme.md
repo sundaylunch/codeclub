@@ -49,10 +49,12 @@ canvas {
 ```
 
 Press run, you should see a border drawn around your canvas!
+
 #ccc represents the colour of the border - it should be a light gray
+
 Change this to your own colour (if you click on the small gray circle next to #ccc you will get a colour picker).
 
-Don't forget to press run to see the change
+Don't forget to press run to see the change!
 
 ## Step 3
 
