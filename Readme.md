@@ -1,5 +1,7 @@
 # Creating an HTML/Javascript Game
 
+Have a look at the final project here [jsfiddle example](https://jsfiddle.net/xq41u0af/4/)
+
 ## Step 1
 
 First we're going to create a circle on an HTML canvas.
