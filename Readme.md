@@ -56,6 +56,8 @@ Change this to your own colour (if you click on the small gray circle next to #c
 
 Don't forget to press run to see the change!
 
+![fiddle screenshot](fiddle_screenshot.png "Example image")
+
 ## Step 3
 
 Change the width and height of the <b>canvas</b> - have a look at the html code, and see if you can make the canvas three times as big!
